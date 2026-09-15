@@ -56,7 +56,7 @@ public final class EnderEggPlugin extends JavaPlugin implements Listener, Comman
         if (speed == null) return;
 
         boolean hasEgg = hasEnderEgg(player);
-        AttributeModifier existing = speed.getModifier(speedModifierKey);
+        AttributeModifier existing = findSpeedModifier(speed);
 
         if (hasEgg && existing == null) {
             speed.addModifier(new AttributeModifier(
@@ -70,10 +70,19 @@ public final class EnderEggPlugin extends JavaPlugin implements Listener, Comman
         }
     }
 
+    private AttributeModifier findSpeedModifier(AttributeInstance speed) {
+        for (AttributeModifier modifier : speed.getModifiers()) {
+            if (modifier.getKey().equals(speedModifierKey)) {
+                return modifier;
+            }
+        }
+        return null;
+    }
+
     private void removeSpeedModifier(Player player) {
         AttributeInstance speed = player.getAttribute(Attribute.MOVEMENT_SPEED);
         if (speed == null) return;
-        AttributeModifier existing = speed.getModifier(speedModifierKey);
+        AttributeModifier existing = findSpeedModifier(speed);
         if (existing != null) speed.removeModifier(existing);
     }
 
