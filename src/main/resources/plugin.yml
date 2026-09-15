@@ -1,0 +1,15 @@
+name: EnderEgg
+version: 1.0.0
+main: net.ludovicoflaviano.enderegg.EnderEggPlugin
+api-version: '1.21'
+author: LudovicoFlaviano
+description: Gives players Speed I, Strength I, and Resistance I while an Ender Egg is in their inventory.
+commands:
+  enderegg:
+    description: Gives a custom Ender Egg.
+    usage: /enderegg give [player] [amount]
+    permission: enderegg.admin
+permissions:
+  enderegg.admin:
+    description: Allows giving Ender Eggs.
+    default: op
